@@ -1,1 +1,18 @@
 # Add any directories, files, or patterns you don't want to be tracked by version control
+.gitignore
+.idea/.name
+.idea/compiler.xml
+.idea/copyright/
+.idea/encodings.xml
+.idea/libraries/
+.idea/misc.xml
+.idea/modules.xml
+.idea/scopes/
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/uiDesigner.xml
+target/generated-sources/
+target/classes/
+target/test-classes/
+target/generated-test-sources/
+logs/
