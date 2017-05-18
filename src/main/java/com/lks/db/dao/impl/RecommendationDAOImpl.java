@@ -87,17 +87,17 @@ public class RecommendationDAOImpl implements RecommendationDAO {
     }
 
     @Override
-    public RecommendationQO getRecommendationByIdForRead(int notificationId) {
-        logger.info("Entering getRecommendationByIdForRead {}", notificationId);
+    public RecommendationQO getRecommendationByIdForRead(int recommendationId) {
+        logger.info("Entering getRecommendationByIdForRead {}", recommendationId);
         try {
-            SqlParameterSource namedParameters = new MapSqlParameterSource(ID, notificationId);
+            SqlParameterSource namedParameters = new MapSqlParameterSource(ID, recommendationId);
             RecommendationQO resp = namedParameterJdbcTemplate.queryForObject(
                     SQL_GET_RECOMMENDATION_FOR_ID_FOR_READ,
                     namedParameters, new RecommendationRowMapper());
-            logger.info("Exiting getRecommendationByIdForRead {}", notificationId);
+            logger.info("Exiting getRecommendationByIdForRead {}", recommendationId);
             return resp;
         } catch (EmptyResultDataAccessException e) {
-            logger.error("getRecommendationByIdForRead - No Recommendation found for id  :  {} ", notificationId);
+            logger.error("getRecommendationByIdForRead - No Recommendation found for id  :  {} ", recommendationId);
             return null;
         } catch (IncorrectResultSizeDataAccessException ie) {
             logger.error("getRecommendationByIdForRead - Problem getting Recommendation for id from DB : ", ie);

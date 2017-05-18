@@ -11,5 +11,5 @@ public interface RecommendationDAO {
 
     int addRecommendation(RecommendationQO recommendationQO);
 
-    RecommendationQO getRecommendationByIdForRead(int notificationId);
+    RecommendationQO getRecommendationByIdForRead(int recommendationId);
 }
