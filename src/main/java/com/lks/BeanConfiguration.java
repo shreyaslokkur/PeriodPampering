@@ -1,8 +1,8 @@
 package com.lks;
 
 import com.lks.error.ErrorHandler;
-import com.lks.db.dao.NotificationDAO;
-import com.lks.db.dao.impl.NotificationDAOImpl;
+import com.lks.db.dao.RecommendationDAO;
+import com.lks.db.dao.impl.RecommendationDAOImpl;
 import com.lks.generator.AcknowledgementServiceGenerator;
 import com.lks.notifications.EmailNotification;
 import com.lks.service.NotificationService;
@@ -33,8 +33,8 @@ public class BeanConfiguration {
     public ErrorHandler getErrorHandler() { return new ErrorHandler(); }
 
     @Bean
-    public NotificationDAO getNotificationDAO() {
-        return new NotificationDAOImpl();
+    public RecommendationDAO getNotificationDAO() {
+        return new RecommendationDAOImpl();
     }
 
     @Bean

@@ -1,14 +1,7 @@
 package com.lks;
 
-import com.lks.connector.TallyConnector;
-import com.lks.core.ServiceType;
-import com.lks.db.dao.NotificationDAO;
-import com.lks.db.qo.NotificationQO;
+import com.lks.db.dao.RecommendationDAO;
 import com.lks.generator.AcknowledgementServiceGenerator;
-import com.lks.models.NotificationDTO;
-import com.lks.models.User;
-import com.lks.parser.CSVParser;
-import com.lks.parser.DayBookParser;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,18 +19,12 @@ public class DayBookParserTest {
 
 
     @Autowired
-    NotificationDAO notificationDAO;
+    RecommendationDAO notificationDAO;
 
     @Autowired
     AcknowledgementServiceGenerator acknowledgementServiceGenerator;
 
 
-    @Test
-    public void testTallyConnector() {
-        List<NotificationDTO> notificationDTOList = dayBookParser.parseDayBook("static/DayBook.xml");
-        Assert.assertNotNull(notificationDTOList);
-
-    }
 
 
 
