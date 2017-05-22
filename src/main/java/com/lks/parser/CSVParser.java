@@ -5,7 +5,9 @@ import com.lks.core.MRVException;
 import com.lks.models.BhavDO;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -26,11 +28,11 @@ public class CSVParser {
     private final static int TOTALTRADES_POS = 11;
     private final static int ISIN_POS = 12;
 
-    public Map<String, BhavDO> parseCSV() {
+    public List<BhavDO> parseCSV() {
 
         BufferedReader crunchifyBuffer = null;
         String splitBy = ",";
-        Map<String,BhavDO> bhavModelMap = new HashMap<>();
+        List<BhavDO> bhavDOList = new ArrayList<>();
         File csvFile = new File("static/bhav.csv");
         try {
             String crunchifyLine;
@@ -56,7 +58,7 @@ public class CSVParser {
                 bhavDO.setTimeStamp(bhav[TIMESTAMP_POS]);
                 bhavDO.setTotalTrades(bhav[TOTALTRADES_POS]);
                 bhavDO.setIsin(bhav[ISIN_POS]);
-                bhavModelMap.put(bhav[ISIN_POS], bhavDO);
+                bhavDOList.add(bhavDO);
 
             }
 
@@ -73,7 +75,7 @@ public class CSVParser {
                 crunchifyException.printStackTrace();
             }
         }
-        return bhavModelMap;
+        return bhavDOList;
     }
 
 

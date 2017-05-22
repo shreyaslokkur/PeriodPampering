@@ -13,6 +13,7 @@ private static final String RECOMMENDER_ID = "RECOMMENDER_ID";
 private static final String COMPANY_ID = "COMPANY_ID";
 private static final String START_PRICE = "START_PRICE";
 private static final String TARGET_PRICE = "TARGET_PRICE";
+private static final String UPSIDE = "UPSIDE";
 private static final String DURATION = "DURATION";
 private static final String RECOMMENDATION_STATUS = "RECOMMENDATION_STATUS";
 private static final String CREATED_DTS = "CREATED_DTS";
@@ -27,6 +28,7 @@ public RecommendationQO mapRow(ResultSet rs, int rowNum) throws SQLException {
         recommendationQO.setCompanyId(rs.getInt(COMPANY_ID));
         recommendationQO.setStartPrice(rs.getDouble(START_PRICE));
         recommendationQO.setTargetPrice(rs.getDouble(TARGET_PRICE));
+            recommendationQO.setUpside(rs.getDouble(UPSIDE));
         recommendationQO.setDuration(rs.getLong(DURATION));
         recommendationQO.setRecommendationStatus(rs.getString(RECOMMENDATION_STATUS));
         recommendationQO.setCreatedDts(rs.getLong(CREATED_DTS));

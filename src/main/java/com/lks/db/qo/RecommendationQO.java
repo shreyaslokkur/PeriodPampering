@@ -8,6 +8,7 @@ public class RecommendationQO {
     private int companyId;
     private double startPrice;
     private double targetPrice;
+    private double upside;
     private long duration;
     private String recommendationStatus;
     private long createdDts;
@@ -51,6 +52,14 @@ public class RecommendationQO {
 
     public void setTargetPrice(double targetPrice) {
         this.targetPrice = targetPrice;
+    }
+
+    public double getUpside() {
+        return upside;
+    }
+
+    public void setUpside(double upside) {
+        this.upside = upside;
     }
 
     public long getDuration() {

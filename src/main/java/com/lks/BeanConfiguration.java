@@ -1,5 +1,8 @@
 package com.lks;
 
+import com.lks.converters.MRVConversionServiceUtil;
+import com.lks.db.dao.BhavDAO;
+import com.lks.db.dao.impl.BhavDAOImpl;
 import com.lks.error.ErrorHandler;
 import com.lks.db.dao.RecommendationDAO;
 import com.lks.db.dao.impl.RecommendationDAOImpl;
@@ -40,6 +43,16 @@ public class BeanConfiguration {
     @Bean
     public NotificationService getNotificatonService() {
         return new NotificationService();
+    }
+
+    @Bean
+    public BhavDAO getBhavDAO() {
+        return new BhavDAOImpl();
+    }
+
+    @Bean
+    public MRVConversionServiceUtil getMRVConversionServiceUtil() {
+        return new MRVConversionServiceUtil();
     }
 
 
