@@ -31,7 +31,7 @@ public class EmailNotification {
     private String templateRepeatHeaderText = " <p><span style=\"color:#646464;font-size:20px;font-family:arial;font-style:normal\">Thank you for visiting Madhus Enterprises </span></p>" +
             "<p><span style=\"color:#646464;font-size:20px;font-family:arial;font-style:normal\">We value your feedback and request you to review us at ${googleUrl} and like our facebook page at ${facebookUrl} </span></p>" ;
 
-    public void generateAndSendEmail(NotificationDTO notificationDTO) {
+    /*public void generateAndSendEmail(NotificationDTO notificationDTO) {
 
         logger.info("Entering Email Notification : {}",notificationDTO);
 
@@ -113,7 +113,7 @@ public class EmailNotification {
 
         logger.info("The email body: {}", resolvedString);
         return resolvedString ;
-    }
+    }*/
 
 
 

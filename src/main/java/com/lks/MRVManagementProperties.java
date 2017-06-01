@@ -7,61 +7,61 @@ import javax.validation.constraints.NotNull;
 @ConfigurationProperties("com.lks")
 public class MRVManagementProperties {
 
-    @NotNull
+    //@NotNull
     private String emailUsername;
 
-    @NotNull
+    //@NotNull
     private String emailPassword;
 
-    @NotNull
+    //@NotNull
     private String adminEmail;
 
-    @NotNull
+    //@NotNull
     private String smsUsername;
 
-    @NotNull
+    //@NotNull
     private String smsHash;
 
-    @NotNull
+    //@NotNull
     private String smsSender;
 
-    @NotNull
+    //@NotNull
     private String smsMessage;
 
-    @NotNull
+    //@NotNull
     private String smsRepeatMessage;
 
-    @NotNull
+    //@NotNull
     private String facebookUrl;
 
-    @NotNull
+    //@NotNull
     private String googleUrl;
 
-    @NotNull
+    //@NotNull
     private String emailPort;
 
-    @NotNull
+    //@NotNull
     private String emailHost;
 
-    @NotNull
+    //@NotNull
     private String errorEmailUsername;
 
-    @NotNull
+    //@NotNull
     private String errorEmailPassword;
 
-    @NotNull
+    //@NotNull
     private String tallyURL;
 
-    @NotNull
+    //@NotNull
     private boolean isUAT;
 
-    @NotNull
+    //@NotNull
     private String uatEmail;
 
-    @NotNull
+    //@NotNull
     private String uatSmsNumber;
 
-    @NotNull
+    //@NotNull
     private String uatSmsMessage;
 
 

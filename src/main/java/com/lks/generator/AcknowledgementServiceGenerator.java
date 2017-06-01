@@ -25,7 +25,7 @@ public class AcknowledgementServiceGenerator {
     @Autowired
     ErrorHandler errorHandler;
 
-    public List<AcknowledgementDTO> generateUATAcknowledgement(List<NotificationDTO> notificationDTOList) {
+    /*public List<AcknowledgementDTO> generateUATAcknowledgement(List<NotificationDTO> notificationDTOList) {
         logger.info("Entering generateAcknowledgement: {}", notificationDTOList);
         List<AcknowledgementDTO> acknowledgementDTOList = new ArrayList<>();
         AcknowledgementDTO acknowledgementDTO;
@@ -120,7 +120,7 @@ public class AcknowledgementServiceGenerator {
         }
         logger.info("Exiting generateAcknowledgement");
         return acknowledgementDTOList;
-    }
+    }*/
 
 
 }
