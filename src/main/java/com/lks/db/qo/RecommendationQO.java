@@ -13,6 +13,7 @@ public class RecommendationQO {
     private String recommendationStatus;
     private long createdDts;
     private boolean isActive;
+    private double score;
 
     public int getId() {
         return id;
@@ -94,6 +95,14 @@ public class RecommendationQO {
         this.isActive = isActive;
     }
 
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
     @Override
     public String toString() {
         return "RecommendationQO{" +
@@ -102,10 +111,12 @@ public class RecommendationQO {
                 ", companyId=" + companyId +
                 ", startPrice=" + startPrice +
                 ", targetPrice=" + targetPrice +
+                ", upside=" + upside +
                 ", duration=" + duration +
                 ", recommendationStatus='" + recommendationStatus + '\'' +
                 ", createdDts=" + createdDts +
                 ", isActive=" + isActive +
+                ", score=" + score +
                 '}';
     }
 }

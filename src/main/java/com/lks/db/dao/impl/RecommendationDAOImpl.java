@@ -31,8 +31,8 @@ public class RecommendationDAOImpl implements RecommendationDAO {
     NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     private static final String SQL_CREATE_RECOMMENDATION = "INSERT INTO RECOMMENDATION "
-            + "(RECOMMENDER_ID, COMPANY_ID, START_PRICE, TARGET_PRICE, DURATION, RECOMMENDATION_STATUS, CREATED_DTS, IS_ACTIVE) VALUES "
-            + "(:recommenderId, :companyId, :startPrice, :targetPrice, :duration, :recommendationStatus, :createdDts, :isActive);";
+            + "(RECOMMENDER_ID, COMPANY_ID, START_PRICE, TARGET_PRICE, DURATION, RECOMMENDATION_STATUS, SCORE, CREATED_DTS, IS_ACTIVE) VALUES "
+            + "(:recommenderId, :companyId, :startPrice, :targetPrice, :duration, :recommendationStatus, :score, :createdDts, :isActive);";
 
     private static final String SQL_GET_RECOMMENDATION_FOR_ID_FOR_READ = "SELECT R.* " +
             "FROM RECOMMENDATION R " +
@@ -46,6 +46,7 @@ public class RecommendationDAOImpl implements RecommendationDAO {
     private static final String TARGET_PRICE = "TARGET_PRICE";
     private static final String DURATION = "DURATION";
     private static final String RECOMMENDATION_STATUS = "RECOMMENDATION_STATUS";
+    private static final String SCORE = "SCORE";
     private static final String CREATED_DTS = "CREATED_DTS";
     private static final String IS_ACTIVE = "IS_ACTIVE";
 
@@ -63,6 +64,7 @@ public class RecommendationDAOImpl implements RecommendationDAO {
             namedParameters.addValue(TARGET_PRICE, recommendationQO.getTargetPrice());
             namedParameters.addValue(DURATION, recommendationQO.getDuration());
             namedParameters.addValue(RECOMMENDATION_STATUS, recommendationQO.getRecommendationStatus());
+            namedParameters.addValue(SCORE, recommendationQO.getScore());
             namedParameters.addValue(IS_ACTIVE, recommendationQO.isActive());
             namedParameters.addValue(CREATED_DTS, currentTimeMillis);
             KeyHolder keyHolder = new GeneratedKeyHolder();

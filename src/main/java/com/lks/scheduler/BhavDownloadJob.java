@@ -3,6 +3,7 @@ package com.lks.scheduler;
 import com.lks.converters.MRVConversionServiceUtil;
 import com.lks.db.dao.BhavDAO;
 import com.lks.db.qo.BhavQO;
+import com.lks.generator.RecommendationScoreGenerator;
 import com.lks.models.BhavDO;
 import com.lks.parser.CSVParser;
 import com.lks.scraper.NSEBhavScraper;
@@ -29,7 +30,6 @@ public class BhavDownloadJob {
     @Autowired
     MRVConversionServiceUtil mrvConversionServiceUtil;
 
-
     @Scheduled(cron = "0 0 17 * * MON-FRI")
     public void execute(){
         nseBhavScraper.scrapeBhavFromNSE();
@@ -40,7 +40,7 @@ public class BhavDownloadJob {
         for(BhavQO bhavQO : bhavQOList) {
             bhavDAO.addBhav(bhavQO);
         }
-        //update recommendation probability score
+        
 
     }
 
