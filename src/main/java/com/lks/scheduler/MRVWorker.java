@@ -1,6 +1,6 @@
 package com.lks.scheduler;
 
-import com.lks.service.NotificationService;
+import com.lks.service.RecommendationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ public class MRVWorker {
     private static final Logger logger = LoggerFactory.getLogger(MRVWorker.class);
 
     @Autowired
-    NotificationService notificationService;
+    RecommendationService recommendationService;
 
 
     @Scheduled(cron = "0 20 0 * * ?")
@@ -21,7 +21,7 @@ public class MRVWorker {
 
         logger.info("Inside the notification scheduled job");
 
-        notificationService.execute();
+        recommendationService.execute();
 
     }
 

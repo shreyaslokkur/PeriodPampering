@@ -40,7 +40,7 @@ public class BhavDownloadJob {
         for(BhavQO bhavQO : bhavQOList) {
             bhavDAO.addBhav(bhavQO);
         }
-        
+
 
     }
 

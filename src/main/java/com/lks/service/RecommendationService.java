@@ -1,0 +1,24 @@
+package com.lks.service;
+
+import com.lks.db.dao.RecommendationDAO;
+import com.lks.models.RecommendationDO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: shreyaslokkur
+ */
+public interface RecommendationService {
+
+
+    public RecommendationDO getRecommendation(int id);
+    public void addRecommendation(RecommendationDO recommendationDO);
+    public void updateRecommendation(RecommendationDO recommendationDO);
+    public void deleteRecommendation(int id);
+
+
+
+
+}

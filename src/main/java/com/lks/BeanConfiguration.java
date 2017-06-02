@@ -11,7 +11,8 @@ import com.lks.generator.RecommendationScoreGenerator;
 import com.lks.notifications.EmailNotification;
 import com.lks.parser.CSVParser;
 import com.lks.scraper.NSEBhavScraper;
-import com.lks.service.NotificationService;
+import com.lks.service.RecommendationService;
+import com.lks.service.impl.RecommendationServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -44,11 +45,6 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public NotificationService getNotificatonService() {
-        return new NotificationService();
-    }
-
-    @Bean
     public BhavDAO getBhavDAO() {
         return new BhavDAOImpl();
     }
@@ -71,6 +67,11 @@ public class BeanConfiguration {
     @Bean
     public RecommendationScoreGenerator getRecommendationScoreGenerator() {
         return new RecommendationScoreGenerator();
+    }
+
+    @Bean
+    public RecommendationService getRecommendationService() {
+        return new RecommendationServiceImpl();
     }
 
 

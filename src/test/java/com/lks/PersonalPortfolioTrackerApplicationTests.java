@@ -1,19 +1,15 @@
 package com.lks;
 
 import com.lks.db.dao.RecommendationDAO;
-import com.lks.db.qo.RecommendationQO;
 import com.lks.generator.AcknowledgementServiceGenerator;
 import com.lks.parser.CSVParser;
-import com.lks.service.NotificationService;
-import org.junit.Assert;
+import com.lks.service.RecommendationService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-
-import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = MarketRecommendationValidatorApplication.class)
@@ -31,14 +27,14 @@ public class PersonalPortfolioTrackerApplicationTests {
 
 
     @Autowired
-    NotificationService notificationService;
+    RecommendationService recommendationService;
 
 
 
 
     @Test
     public void testCompleteWorkflow() {
-        notificationService.execute();
+        recommendationService.execute();
 
     }
 
