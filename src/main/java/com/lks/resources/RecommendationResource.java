@@ -1,11 +1,13 @@
 package com.lks.resources;
 
 import com.lks.models.RecommendationDO;
+import com.lks.models.RecommenderDO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 /**
  * Created by lokkur on 02/06/17.
@@ -19,19 +21,19 @@ public class RecommendationResource {
 
     @POST
     @Path("/create")
-    public void createRecommendation(RecommendationDO recommendationDO) {
-        logger.info("Received createRecommendation Request {} ", recommendationDO);
+    public void createRecommendation(RecommendationDO recommendationDO, RecommenderDO recommenderDO) {
+        logger.info("Received createRecommendation Request {} {}", recommendationDO, recommenderDO);
     }
 
     @PUT
     @Path("/update")
-    public void updateRecommendation(RecommendationDO recommendationDO) {
+    public void updateRecommendation(RecommendationDO recommendationDO, RecommenderDO recommenderDO) {
         logger.info("Received updateRecommendation Request {} ", recommendationDO);
     }
 
     @GET
     @Path("/{id}")
-    public RecommendationDO getRecommendation(@PathParam("id") String recommendationId) {
+    public List<RecommendationDO> getRecommendation(String recommendationId) {
         logger.info("Received getRecommendation Request {} ", recommendationId);
         return null;
     }
