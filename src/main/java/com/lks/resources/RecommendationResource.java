@@ -2,8 +2,10 @@ package com.lks.resources;
 
 import com.lks.models.RecommendationDO;
 import com.lks.models.RecommenderDO;
+import com.lks.service.RecommendationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -17,12 +19,16 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class RecommendationResource {
 
+    @Autowired
+    RecommendationService recommendationService;
+
     static Logger logger = LoggerFactory.getLogger(RecommendationResource.class);
 
     @POST
     @Path("/create")
     public void createRecommendation(RecommendationDO recommendationDO, RecommenderDO recommenderDO) {
         logger.info("Received createRecommendation Request {} {}", recommendationDO, recommenderDO);
+        recommendationService.addRecommendation(recommendationDO, recommenderDO);
     }
 
     @PUT

@@ -5,9 +5,9 @@ public class RecommenderDO {
 
     private int id;
     private String fbID;
-    private String firstName;
-    private String lastName;
+    private String brokerName;
     private String websiteUrl;
+    private boolean isBroker;
     private int recommendedById;
     private String recommenderType;
     private long createdDts;
@@ -28,28 +28,28 @@ public class RecommenderDO {
         this.fbID = fbID;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getBrokerName() {
+        return brokerName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setBrokerName(String brokerName) {
+        this.brokerName = brokerName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getWebsiteUrl() {
+   public String getWebsiteUrl() {
         return websiteUrl;
     }
 
     public void setWebsiteUrl(String websiteUrl) {
         this.websiteUrl = websiteUrl;
+    }
+
+    public boolean isBroker() {
+        return isBroker;
+    }
+
+    public void setBroker(boolean isBroker) {
+        this.isBroker = isBroker;
     }
 
     public int getRecommendedById() {
@@ -78,12 +78,12 @@ public class RecommenderDO {
 
     @Override
     public String toString() {
-        return "RecommenderQO{" +
+        return "RecommenderDO{" +
                 "id=" + id +
                 ", fbID='" + fbID + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", brokerName='" + brokerName + '\'' +
                 ", websiteUrl='" + websiteUrl + '\'' +
+                ", isBroker='" + isBroker + '\'' +
                 ", recommendedById=" + recommendedById +
                 ", recommenderType='" + recommenderType + '\'' +
                 ", createdDts=" + createdDts +
