@@ -4,6 +4,7 @@ package com.lks.db.qo;
 public class RecommendationQO {
 
     private int id;
+    private int userId;
     private int recommenderId;
     private int companyId;
     private double startPrice;
@@ -12,6 +13,7 @@ public class RecommendationQO {
     private long duration;
     private String recommendationStatus;
     private long createdDts;
+    private long modifiedDts;
     private boolean isActive;
     private double score;
 
@@ -21,6 +23,14 @@ public class RecommendationQO {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getRecommenderId() {
@@ -87,6 +97,14 @@ public class RecommendationQO {
         this.createdDts = createdDts;
     }
 
+    public long getModifiedDts() {
+        return modifiedDts;
+    }
+
+    public void setModifiedDts(long modifiedDts) {
+        this.modifiedDts = modifiedDts;
+    }
+
     public boolean isActive() {
         return isActive;
     }
@@ -107,6 +125,7 @@ public class RecommendationQO {
     public String toString() {
         return "RecommendationQO{" +
                 "id=" + id +
+                ", userId=" + userId +
                 ", recommenderId=" + recommenderId +
                 ", companyId=" + companyId +
                 ", startPrice=" + startPrice +
@@ -115,6 +134,7 @@ public class RecommendationQO {
                 ", duration=" + duration +
                 ", recommendationStatus='" + recommendationStatus + '\'' +
                 ", createdDts=" + createdDts +
+                ", modifiedDts=" + modifiedDts +
                 ", isActive=" + isActive +
                 ", score=" + score +
                 '}';

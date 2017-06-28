@@ -4,6 +4,7 @@ package com.lks.models;
 public class RecommendationDO {
 
     private int id;
+    private int userId;
     private int recommenderId;
     private int companyId;
     private double startPrice;
@@ -21,6 +22,14 @@ public class RecommendationDO {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getRecommenderId() {
@@ -105,8 +114,9 @@ public class RecommendationDO {
 
     @Override
     public String toString() {
-        return "RecommendationQO{" +
+        return "RecommendationDO{" +
                 "id=" + id +
+                ", userId=" + userId +
                 ", recommenderId=" + recommenderId +
                 ", companyId=" + companyId +
                 ", startPrice=" + startPrice +

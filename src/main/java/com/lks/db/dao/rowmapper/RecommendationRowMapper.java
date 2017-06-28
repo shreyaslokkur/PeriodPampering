@@ -9,6 +9,7 @@ import java.sql.SQLException;
 public class RecommendationRowMapper implements RowMapper<RecommendationQO> {
 
 private static final String ID = "ID";
+private static final String USER_ID = "USER_ID";
 private static final String RECOMMENDER_ID = "RECOMMENDER_ID";
 private static final String COMPANY_ID = "COMPANY_ID";
 private static final String START_PRICE = "START_PRICE";

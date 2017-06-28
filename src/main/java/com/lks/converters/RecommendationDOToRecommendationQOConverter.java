@@ -16,6 +16,7 @@ public class RecommendationDOToRecommendationQOConverter implements Converter<Re
 
         RecommendationQO recommendationQO = new RecommendationQO();
         recommendationQO.setRecommenderId(recommendationDO.getRecommenderId());
+        recommendationQO.setUserId(recommendationDO.getUserId());
         recommendationQO.setCompanyId(recommendationDO.getCompanyId());
         recommendationQO.setStartPrice(recommendationDO.getStartPrice());
         recommendationQO.setTargetPrice(recommendationDO.getTargetPrice());

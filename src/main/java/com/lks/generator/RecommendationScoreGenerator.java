@@ -1,10 +1,14 @@
 package com.lks.generator;
 
+import com.lks.core.MRVErrorCodes;
+import com.lks.core.MRVException;
+import com.lks.db.dao.BhavDAO;
 import com.lks.db.qo.BhavQO;
 import com.lks.db.qo.CompanyQO;
 import com.lks.db.qo.RecommendationQO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.*;
 import java.util.List;
@@ -16,7 +20,21 @@ public class RecommendationScoreGenerator {
 
     private static final Logger logger = LoggerFactory.getLogger(RecommendationScoreGenerator.class);
 
-    public double calculate(RecommendationQO recommendationQO, BhavQO bhavQO) {
+    @Autowired
+    BhavDAO bhavDAO;
+
+    public double calculate(RecommendationQO recommendationQO) {
+        BhavQO bhavQO = bhavDAO.getBhavByIdForRead(recommendationQO.getCompanyId());
+        if(bhavQO != null) {
+            double recommendationScore = calculate(recommendationQO, bhavQO);
+            return recommendationScore;
+        }
+        else {
+            throw new MRVException(MRVErrorCodes.INTERNAL_SERVER_ERROR,"Unable to retrieve bhav for the id: "+ recommendationQO.getCompanyId());
+        }
+    }
+
+    private double calculate(RecommendationQO recommendationQO, BhavQO bhavQO) {
         logger.info("Entering the recommendation score generator");
 
         double startPrice = recommendationQO.getStartPrice();
