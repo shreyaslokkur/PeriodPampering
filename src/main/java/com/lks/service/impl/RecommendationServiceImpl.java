@@ -52,26 +52,31 @@ public class RecommendationServiceImpl implements RecommendationService {
          */
 
         List<RecommendationQO> recommendationQOList = recommendationDAO.getRecommendationByUserIdForRead(userId);
-        SchedulerJobQO latestCompletedSchedulerJob = schedulerJobDAO.getLatestCompletedSchedulerJob();
-        if(latestCompletedSchedulerJob != null) {
-            for(RecommendationQO recommendationQO : recommendationQOList) {
-                if(recommendationQO.getModifiedDTS() < latestCompletedSchedulerJob.getCompletedDTS()) {
-                    double recommendationScore = recommendationScoreGenerator.calculate(recommendationQO);
-                    recommendationDAO.updateRecommendationScore(recommendationQO.getId(), recommendationScore);
-                    recommendationQO.setScore(recommendationScore);
+        if(recommendationQOList != null) {
+            SchedulerJobQO latestCompletedSchedulerJob = schedulerJobDAO.getLatestCompletedSchedulerJob();
+            if(latestCompletedSchedulerJob != null) {
+                for(RecommendationQO recommendationQO : recommendationQOList) {
+                    if(recommendationQO.getModifiedDTS() < latestCompletedSchedulerJob.getCompletedDTS()) {
+                        double recommendationScore = recommendationScoreGenerator.calculate(recommendationQO);
+                        recommendationDAO.updateRecommendationScore(recommendationQO.getId(), recommendationScore);
+                        recommendationQO.setScore(recommendationScore);
+                    }
                 }
+
+            } else {
+                throw new MRVException(MRVErrorCodes.INTERNAL_SERVER_ERROR, "Unable to retrieve the latest completed scheduled job tinme from database");
             }
 
-        } else {
-            throw new MRVException(MRVErrorCodes.INTERNAL_SERVER_ERROR, "Unable to retrieve the latest completed scheduled job tinme from database");
+            //Convert Recommendation QO to Recommendation DO
+            TypeDescriptor sourceType = TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(RecommendationQO.class));
+            TypeDescriptor targetType = TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(RecommendationDO.class));
+            List<RecommendationDO> recommendationDOList = (List<RecommendationDO>) mrvConversionServiceUtil.convert(recommendationQOList, sourceType, targetType);
+
+            return recommendationDOList;
+
         }
+        return null;
 
-        //Convert Recommendation QO to Recommendation DO
-        TypeDescriptor sourceType = TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(RecommendationQO.class));
-        TypeDescriptor targetType = TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(RecommendationDO.class));
-        List<RecommendationDO> recommendationDOList = (List<RecommendationDO>) mrvConversionServiceUtil.convert(recommendationQOList, sourceType, targetType);
-
-        return recommendationDOList;
     }
 
     @Override
@@ -108,6 +113,10 @@ public class RecommendationServiceImpl implements RecommendationService {
                 recommenderQO.setBrokerName(recommenderDO.getBrokerName());
             }
             int recommenderId = recommenderDAO.addRecommender(recommenderQO);
+            if(recommenderId == 0) {
+                throw new MRVException(MRVErrorCodes.INTERNAL_SERVER_ERROR, "Unable to add recommender: "+ recommenderQO);
+
+            }
             recommendationDO.setRecommenderId(recommenderId);
         }
         RecommendationQO recommendationQO = new RecommendationQO();
@@ -116,7 +125,11 @@ public class RecommendationServiceImpl implements RecommendationService {
         recommendationQO.setRecommenderId(recommendationDO.getRecommenderId());
         recommendationQO.setTargetPrice(recommendationDO.getTargetPrice());
         recommendationQO.setCompanyId(recommendationDO.getCompanyId());
-        recommendationDAO.addRecommendation(recommendationQO);
+        int recommendationID = recommendationDAO.addRecommendation(recommendationQO);
+        if(recommendationID == 0) {
+            //Need to rollback add recommender
+            throw new MRVException(MRVErrorCodes.INTERNAL_SERVER_ERROR, "Unable to add recommendation: "+ recommendationQO);
+        }
 
     }
 
