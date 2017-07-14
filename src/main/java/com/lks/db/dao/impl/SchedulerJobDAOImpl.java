@@ -6,6 +6,7 @@ import com.lks.db.dao.SchedulerJobDAO;
 import com.lks.db.dao.rowmapper.SchedulerJobRowMapper;
 import com.lks.db.qo.BhavQO;
 import com.lks.db.qo.SchedulerJobQO;
+import com.lks.scheduler.SchedulerJobStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,9 @@ public class SchedulerJobDAOImpl implements SchedulerJobDAO {
 
     private static final String SQL_GET_LATEST_COMPLETED_SCHEDULER_JOB_FOR_READ = "SELECT SJ.* " +
             "FROM SCHEDULER_JOB SJ " +
-            "WHERE SJ.ID = :id";
+            "INNER JOIN ( " +
+            "SELECT max(COMPLETED_DTS) as MaxDate " +
+            "FROM SCHEDULER_JOB) tm on SJ.STATUS = :status and SJ.COMPLETED_DTS = tm.MaxDate";
 
     private static final String SQL_UPDATE_SCHEDULER_JOB = "UPDATE SCHEDULER_JOB SJ SET SJ.STATUS = :status, SJ.ERROR_MESSAGE = :errorMessage, SJ.COMPLETED_DTS = :completedDts WHERE SJ.ID = :id";
 
@@ -81,7 +84,8 @@ public class SchedulerJobDAOImpl implements SchedulerJobDAO {
     public SchedulerJobQO getLatestCompletedSchedulerJob() {
         logger.info("Entering getLatestCompletedSchedulerJob");
         try {
-            SqlParameterSource namedParameters = new MapSqlParameterSource();
+            MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+            namedParameters.addValue(STATUS, SchedulerJobStatus.COMPLETED.name());
             SchedulerJobQO resp = namedParameterJdbcTemplate.queryForObject(
                     SQL_GET_LATEST_COMPLETED_SCHEDULER_JOB_FOR_READ,
                     namedParameters, new SchedulerJobRowMapper());
