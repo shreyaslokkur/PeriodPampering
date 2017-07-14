@@ -21,8 +21,6 @@ public class MRVWorker {
 
         logger.info("Inside the notification scheduled job");
 
-        recommendationService.execute();
-
     }
 
 

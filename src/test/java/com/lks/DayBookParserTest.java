@@ -19,7 +19,7 @@ public class DayBookParserTest {
     @Test(dataProvider = "recommendationData")
     public void testScore(RecommendationQO recommendationQO, BhavQO bhavQO)  {
         RecommendationScoreGenerator recommendationScoreGenerator = new RecommendationScoreGenerator();
-        double score = recommendationScoreGenerator.calculate(recommendationQO, bhavQO);
+        double score = recommendationScoreGenerator.calculate(recommendationQO);
         System.out.println(score);
     }
 

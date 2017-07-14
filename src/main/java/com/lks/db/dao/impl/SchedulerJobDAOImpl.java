@@ -37,7 +37,7 @@ public class SchedulerJobDAOImpl implements SchedulerJobDAO {
             "FROM SCHEDULER_JOB SJ " +
             "WHERE SJ.ID = :id";
 
-    private static final String SQL_UPDATE_SCHEDULER_JOB = "";
+    private static final String SQL_UPDATE_SCHEDULER_JOB = "UPDATE SCHEDULER_JOB SJ SET SJ.STATUS = :status, SJ.ERROR_MESSAGE = :errorMessage, SJ.COMPLETED_DTS = :completedDts WHERE SJ.ID = :id";
 
 
     private static final String ID = "ID";
@@ -117,18 +117,18 @@ public class SchedulerJobDAOImpl implements SchedulerJobDAO {
                     SQL_UPDATE_SCHEDULER_JOB,
                     namedParameters);
             logger.info("Exiting updateSchedulerJob: {}", schedulerJobQO);
-            //TODO: check if integer returned is > 1 for success case
             if(update > 0) {
                 return true;
             } else {
                 return false;
             }
-        }
-        //TODO: check what all exceptions can be thrown for update
-        catch (Throwable th) {
+        } catch (DataAccessException de) {
+            logger.error("updateSchedulerJob - Problem updating Scheduler Job : ", de);
+            throw new MRVException(MRVErrorCodes.INTERNAL_SERVER_ERROR, de.getMessage(), de);
+        } catch (Throwable th) {
             logger.error("updateSchedulerJob - Unable to update Scheduler Job for id {} from DB : {}", schedulerJobQO.getId(), th);
             throw new MRVException(MRVErrorCodes.INTERNAL_SERVER_ERROR, th.getMessage(), th);
         }
     }
-    }
+
 }

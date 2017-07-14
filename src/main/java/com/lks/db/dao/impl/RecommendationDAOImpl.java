@@ -43,7 +43,8 @@ public class RecommendationDAOImpl implements RecommendationDAO {
             "FROM RECOMMENDATION R " +
             "WHERE R.USER_ID = :userId";
 
-    private static final String SQL_UPDATE_RECOMMENDATION_SCORE_FOR_ID = "";
+    private static final String SQL_UPDATE_RECOMMENDATION_SCORE_FOR_ID = "UPDATE RECOMMENDATION R SET R.SCORE = :score WHERE R.ID = :id";
+
 
 
 
@@ -130,7 +131,7 @@ public class RecommendationDAOImpl implements RecommendationDAO {
         logger.info("Entering getRecommendationByUserIdForRead {}", userId);
         try {
             SqlParameterSource namedParameters = new MapSqlParameterSource(USER_ID, userId);
-            List<RecommendationQO> resp = namedParameterJdbcTemplate.queryForList(
+            List<RecommendationQO> resp = namedParameterJdbcTemplate.query(
                     SQL_GET_RECOMMENDATION_FOR_USER_ID_FOR_READ,
                     namedParameters, new RecommendationRowMapper());
             logger.info("Exiting getRecommendationByUserIdForRead {}", userId);
@@ -163,15 +164,16 @@ public class RecommendationDAOImpl implements RecommendationDAO {
                     SQL_UPDATE_RECOMMENDATION_SCORE_FOR_ID,
                     namedParameters);
             logger.info("Exiting updateRecommendationScore for Id: {} and Score: {}", recommendationId, recommendationScore);
-            //TODO: check if integer returned is > 1 for success case
+
             if(update > 0) {
                 return true;
             } else {
                 return false;
             }
-        }
-        //TODO: check what all exceptions can be thrown for update
-        catch (Throwable th) {
+        } catch (DataAccessException de) {
+            logger.error("updateRecommendationScore - Problem updating Recommendation Score : ", de);
+            throw new MRVException(MRVErrorCodes.INTERNAL_SERVER_ERROR, de.getMessage(), de);
+        } catch (Throwable th) {
             logger.error("updateRecommendationScore - Unable to update Recommendation for id {} from DB : {}", recommendationId, th);
             throw new MRVException(MRVErrorCodes.INTERNAL_SERVER_ERROR, th.getMessage(), th);
         }

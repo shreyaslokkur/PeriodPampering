@@ -32,12 +32,6 @@ public class PersonalPortfolioTrackerApplicationTests {
 
 
 
-    @Test
-    public void testCompleteWorkflow() {
-        recommendationService.execute();
-
-    }
-
 /*    @Test
     public void testDatabaseInsert() {
         List<User> userList = csvParser.parseCSV();
