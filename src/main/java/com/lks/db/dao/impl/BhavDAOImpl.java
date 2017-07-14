@@ -89,7 +89,7 @@ public class BhavDAOImpl implements BhavDAO {
             }
         } catch (DuplicateKeyException dke) {
             logger.error("addBhav - Duplicate key addition to Bhav DB : ", dke);
-            throw dke;
+            throw new MRVException(MRVErrorCodes.INTERNAL_SERVER_ERROR, dke.getMessage(), dke);
         } catch (DataAccessException de) {
             logger.error("addBhav - Problem adding Bhav to DB : ", de);
             throw new MRVException(MRVErrorCodes.INTERNAL_SERVER_ERROR, de.getMessage(), de);

@@ -72,7 +72,7 @@ public class RecommenderDAOImpl implements RecommenderDAO {
             }
         } catch (DuplicateKeyException dke) {
             logger.error("addRecommender - Duplicate key addition to Recommendation DB : ", dke);
-            throw dke;
+            throw new MRVException(MRVErrorCodes.INTERNAL_SERVER_ERROR, dke.getMessage(), dke);
         } catch (DataAccessException de) {
             logger.error("addRecommender - Problem adding Recommendation to DB : ", de);
             throw new MRVException(MRVErrorCodes.INTERNAL_SERVER_ERROR, de.getMessage(), de);

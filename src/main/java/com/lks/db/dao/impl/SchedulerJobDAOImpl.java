@@ -67,7 +67,7 @@ public class SchedulerJobDAOImpl implements SchedulerJobDAO {
             }
         } catch (DuplicateKeyException dke) {
             logger.error("addSchedulerJob - Duplicate key addition to Scheduler Job DB : ", dke);
-            throw dke;
+            throw new MRVException(MRVErrorCodes.INTERNAL_SERVER_ERROR, dke.getMessage(), dke);
         } catch (DataAccessException de) {
             logger.error("addSchedulerJob - Problem adding Scheduler Job to DB : ", de);
             throw new MRVException(MRVErrorCodes.INTERNAL_SERVER_ERROR, de.getMessage(), de);
