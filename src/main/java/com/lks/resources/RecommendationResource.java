@@ -39,9 +39,10 @@ public class RecommendationResource {
 
     @GET
     @Path("/{id}")
-    public List<RecommendationDO> getRecommendation(String recommendationId) {
-        logger.info("Received getRecommendation Request {} ", recommendationId);
-        return null;
+    public List<RecommendationDO> getRecommendation(int userID) {
+        logger.info("Received getRecommendation Request {} ", userID);
+        List<RecommendationDO> allRecommendations = recommendationService.getAllRecommendations(userID);
+        return allRecommendations;
     }
 
     @DELETE
