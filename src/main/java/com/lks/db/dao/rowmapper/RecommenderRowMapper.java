@@ -1,6 +1,5 @@
 package com.lks.db.dao.rowmapper;
 
-import com.lks.db.qo.RecommendationQO;
 import com.lks.db.qo.RecommenderQO;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -17,6 +16,7 @@ private static final String WEBSITE_URL = "WEBSITE_URL";
 private static final String RECOMMENDED_BY_ID = "RECOMMENDED_BY_ID";
 private static final String RECOMMENDER_TYPE = "RECOMMENDER_TYPE";
 private static final String CREATED_DTS = "CREATED_DTS";
+private static final String MODIFIED_DTS = "MODIFIED_DTS";
 
 @Override
 public RecommenderQO mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -30,7 +30,8 @@ public RecommenderQO mapRow(ResultSet rs, int rowNum) throws SQLException {
         recommenderQO.setWebsiteUrl(rs.getString(WEBSITE_URL));
         recommenderQO.setRecommendedById(rs.getInt(RECOMMENDED_BY_ID));
         recommenderQO.setRecommenderType(rs.getString(RECOMMENDER_TYPE));
-        recommenderQO.setCreatedDts(rs.getLong(CREATED_DTS));
+        recommenderQO.setCreatedDTS(rs.getLong(CREATED_DTS));
+        recommenderQO.setModifiedDTS(rs.getLong(MODIFIED_DTS));
 
         }
         return recommenderQO;

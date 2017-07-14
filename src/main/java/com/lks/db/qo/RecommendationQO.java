@@ -12,8 +12,8 @@ public class RecommendationQO {
     private double upside;
     private long duration;
     private String recommendationStatus;
-    private long createdDts;
-    private long modifiedDts;
+    private long createdDTS;
+    private long modifiedDTS;
     private boolean isActive;
     private double score;
 
@@ -89,20 +89,20 @@ public class RecommendationQO {
         this.recommendationStatus = recommendationStatus;
     }
 
-    public long getCreatedDts() {
-        return createdDts;
+    public long getCreatedDTS() {
+        return createdDTS;
     }
 
-    public void setCreatedDts(long createdDts) {
-        this.createdDts = createdDts;
+    public void setCreatedDTS(long createdDTS) {
+        this.createdDTS = createdDTS;
     }
 
-    public long getModifiedDts() {
-        return modifiedDts;
+    public long getModifiedDTS() {
+        return modifiedDTS;
     }
 
-    public void setModifiedDts(long modifiedDts) {
-        this.modifiedDts = modifiedDts;
+    public void setModifiedDTS(long modifiedDTS) {
+        this.modifiedDTS = modifiedDTS;
     }
 
     public boolean isActive() {
@@ -133,8 +133,8 @@ public class RecommendationQO {
                 ", upside=" + upside +
                 ", duration=" + duration +
                 ", recommendationStatus='" + recommendationStatus + '\'' +
-                ", createdDts=" + createdDts +
-                ", modifiedDts=" + modifiedDts +
+                ", createdDTS=" + createdDTS +
+                ", modifiedDTS=" + modifiedDTS +
                 ", isActive=" + isActive +
                 ", score=" + score +
                 '}';

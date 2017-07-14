@@ -19,6 +19,7 @@ private static final String DURATION = "DURATION";
 private static final String RECOMMENDATION_STATUS = "RECOMMENDATION_STATUS";
 private static final String SCORE = "SCORE";
 private static final String CREATED_DTS = "CREATED_DTS";
+private static final String MODIFIED_DTS = "MODIFIED_DTS";
 private static final String IS_ACTIVE = "IS_ACTIVE";
 @Override
 public RecommendationQO mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -34,7 +35,8 @@ public RecommendationQO mapRow(ResultSet rs, int rowNum) throws SQLException {
         recommendationQO.setDuration(rs.getLong(DURATION));
         recommendationQO.setRecommendationStatus(rs.getString(RECOMMENDATION_STATUS));
         recommendationQO.setScore(rs.getDouble(SCORE));
-        recommendationQO.setCreatedDts(rs.getLong(CREATED_DTS));
+        recommendationQO.setCreatedDTS(rs.getLong(CREATED_DTS));
+        recommendationQO.setModifiedDTS(rs.getLong(MODIFIED_DTS));
         recommendationQO.setActive(rs.getBoolean(IS_ACTIVE));
 
         }

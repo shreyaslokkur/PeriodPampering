@@ -32,8 +32,8 @@ public class RecommendationDAOImpl implements RecommendationDAO {
     NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     private static final String SQL_CREATE_RECOMMENDATION = "INSERT INTO RECOMMENDATION "
-            + "(RECOMMENDER_ID, COMPANY_ID, START_PRICE, TARGET_PRICE, DURATION, RECOMMENDATION_STATUS, SCORE, CREATED_DTS, IS_ACTIVE) VALUES "
-            + "(:recommenderId, :companyId, :startPrice, :targetPrice, :duration, :recommendationStatus, :score, :createdDts, :modifiedDts, :isActive);";
+            + "(RECOMMENDER_ID, COMPANY_ID, START_PRICE, TARGET_PRICE, DURATION, RECOMMENDATION_STATUS, SCORE, CREATED_DTS, MODIFIED_DTS, IS_ACTIVE) VALUES "
+            + "(:recommenderId, :companyId, :startPrice, :targetPrice, :duration, :recommendationStatus, :score, :createdDTS, :modifiedDTS, :isActive);";
 
     private static final String SQL_GET_RECOMMENDATION_FOR_ID_FOR_READ = "SELECT R.* " +
             "FROM RECOMMENDATION R " +
@@ -48,18 +48,18 @@ public class RecommendationDAOImpl implements RecommendationDAO {
 
 
 
-    private static final String ID = "ID";
-    private static final String USER_ID = "USER_ID";
-    private static final String RECOMMENDER_ID = "RECOMMENDER_ID";
-    private static final String COMPANY_ID = "COMPANY_ID";
-    private static final String START_PRICE = "START_PRICE";
-    private static final String TARGET_PRICE = "TARGET_PRICE";
-    private static final String DURATION = "DURATION";
-    private static final String RECOMMENDATION_STATUS = "RECOMMENDATION_STATUS";
-    private static final String SCORE = "SCORE";
-    private static final String CREATED_DTS = "CREATED_DTS";
-    private static final String MODIFIED_DTS = "MODIFIED_DTS";
-    private static final String IS_ACTIVE = "IS_ACTIVE";
+    private static final String ID = "id";
+    private static final String USER_ID = "userID";
+    private static final String RECOMMENDER_ID = "recommenderID";
+    private static final String COMPANY_ID = "companyID";
+    private static final String START_PRICE = "startPrice";
+    private static final String TARGET_PRICE = "targetPrice";
+    private static final String DURATION = "duration";
+    private static final String RECOMMENDATION_STATUS = "recommendationStatus";
+    private static final String SCORE = "score";
+    private static final String CREATED_DTS = "createdDTS";
+    private static final String MODIFIED_DTS = "modifiedDTS";
+    private static final String IS_ACTIVE = "isActive";
 
     @Override
     @Transactional

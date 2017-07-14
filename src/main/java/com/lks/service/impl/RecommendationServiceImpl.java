@@ -17,7 +17,6 @@ import com.lks.service.RecommendationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.TypeDescriptor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -56,7 +55,7 @@ public class RecommendationServiceImpl implements RecommendationService {
         SchedulerJobQO latestCompletedSchedulerJob = schedulerJobDAO.getLatestCompletedSchedulerJob();
         if(latestCompletedSchedulerJob != null) {
             for(RecommendationQO recommendationQO : recommendationQOList) {
-                if(recommendationQO.getModifiedDts() < latestCompletedSchedulerJob.getCompletedDTS()) {
+                if(recommendationQO.getModifiedDTS() < latestCompletedSchedulerJob.getCompletedDTS()) {
                     double recommendationScore = recommendationScoreGenerator.calculate(recommendationQO);
                     recommendationDAO.updateRecommendationScore(recommendationQO.getId(), recommendationScore);
                     recommendationQO.setScore(recommendationScore);

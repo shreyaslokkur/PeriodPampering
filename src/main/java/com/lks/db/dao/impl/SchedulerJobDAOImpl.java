@@ -40,10 +40,10 @@ public class SchedulerJobDAOImpl implements SchedulerJobDAO {
     private static final String SQL_UPDATE_SCHEDULER_JOB = "UPDATE SCHEDULER_JOB SJ SET SJ.STATUS = :status, SJ.ERROR_MESSAGE = :errorMessage, SJ.COMPLETED_DTS = :completedDts WHERE SJ.ID = :id";
 
 
-    private static final String ID = "ID";
-    private static final String STATUS = "STATUS";
-    private static final String ERROR_MESSAGE = "ERROR_MESSAGE";
-    private static final String COMPLETED_DTS = "COMPLETED_DTS";
+    private static final String ID = "id";
+    private static final String STATUS = "status";
+    private static final String ERROR_MESSAGE = "errorMessage";
+    private static final String COMPLETED_DTS = "completedDTS";
 
 
     @Override

@@ -33,28 +33,28 @@ public class BhavDAOImpl implements BhavDAO {
 
     private static final String SQL_CREATE_BHAV = "INSERT INTO BHAV "
             + "(SYMBOL, SERIES, OPEN, HIGH, LOW, CLOSE, LAST, PREV_CLOSE, TOTAL_TRADED_QUANTITY, TOTAL_TRADED_VALUE, ISIN, TOTAL_TRADES, CREATED_DTS) VALUES "
-            + "(:symbol, :series, :open, :high, :low, :close, :last, :prevClose, :totalTradedQuantity, :totalTradedValue, :timestamp, :isin, :totalTrades, :createdDts);";
+            + "(:symbol, :series, :open, :high, :low, :close, :last, :prevClose, :totalTradedQuantity, :totalTradedValue, :timestamp, :isin, :totalTrades, :createdDTS);";
 
     private static final String SQL_GET_BHAV_FOR_ID_FOR_READ = "SELECT R.* " +
             "FROM BHAV B " +
             "WHERE B.ID = :id";
 
 
-    private static final String ID = "ID";
-    private static final String SYMBOL = "SYMBOL";
-    private static final String SERIES = "SERIES";
-    private static final String OPEN = "OPEN";
-    private static final String HIGH = "HIGH";
-    private static final String LOW = "LOW";
-    private static final String CLOSE = "CLOSE";
-    private static final String LAST = "LAST";
-    private static final String PREV_CLOSE = "PREV_CLOSE";
-    private static final String TOTAL_TRADED_QUANTITY = "TOTAL_TRADED_QUANTITY";
-    private static final String TOTAL_TRADED_VALUE = "TOTAL_TRADED_VALUE";
-    private static final String TIMESTAMP = "TIMESTAMP";
-    private static final String ISIN = "ISIN";
-    private static final String TOTAL_TRADES = "TOTAL_TRADES";
-    private static final String CREATED_DTS = "CREATED_DTS";
+    private static final String ID = "id";
+    private static final String SYMBOL = "symbol";
+    private static final String SERIES = "series";
+    private static final String OPEN = "open";
+    private static final String HIGH = "high";
+    private static final String LOW = "low";
+    private static final String CLOSE = "close";
+    private static final String LAST = "last";
+    private static final String PREV_CLOSE = "prevClose";
+    private static final String TOTAL_TRADED_QUANTITY = "totalTradedQuantity";
+    private static final String TOTAL_TRADED_VALUE = "totalTradedValue";
+    private static final String TIMESTAMP = "timestamp";
+    private static final String ISIN = "isin";
+    private static final String TOTAL_TRADES = "totalTrades";
+    private static final String CREATED_DTS = "createdDTS";
 
     @Override
     @Transactional

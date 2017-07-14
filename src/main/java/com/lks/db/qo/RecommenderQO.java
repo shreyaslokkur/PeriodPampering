@@ -10,7 +10,8 @@ public class RecommenderQO {
     private boolean isBroker;
     private int recommendedById;
     private String recommenderType;
-    private long createdDts;
+    private long createdDTS;
+    private long modifiedDTS;
 
     public int getId() {
         return id;
@@ -68,25 +69,34 @@ public class RecommenderQO {
         this.recommenderType = recommenderType;
     }
 
-    public long getCreatedDts() {
-        return createdDts;
+    public long getCreatedDTS() {
+        return createdDTS;
     }
 
-    public void setCreatedDts(long createdDts) {
-        this.createdDts = createdDts;
+    public void setCreatedDTS(long createdDTS) {
+        this.createdDTS = createdDTS;
+    }
+
+    public long getModifiedDTS() {
+        return modifiedDTS;
+    }
+
+    public void setModifiedDTS(long modifiedDTS) {
+        this.modifiedDTS = modifiedDTS;
     }
 
     @Override
     public String toString() {
-        return "RecommenderDO{" +
+        return "RecommenderQO{" +
                 "id=" + id +
                 ", fbID='" + fbID + '\'' +
                 ", brokerName='" + brokerName + '\'' +
                 ", websiteUrl='" + websiteUrl + '\'' +
-                ", isBroker='" + isBroker + '\'' +
+                ", isBroker=" + isBroker +
                 ", recommendedById=" + recommendedById +
                 ", recommenderType='" + recommenderType + '\'' +
-                ", createdDts=" + createdDts +
+                ", createdDTS=" + createdDTS +
+                ", modifiedDTS=" + modifiedDTS +
                 '}';
     }
 }

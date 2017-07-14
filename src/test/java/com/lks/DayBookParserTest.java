@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
 
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -51,7 +50,7 @@ public class DayBookParserTest {
 
 
            recommendationQO.setDuration(differenceInMilis);
-           recommendationQO.setCreatedDts(calendar.getTimeInMillis());
+           recommendationQO.setCreatedDTS(calendar.getTimeInMillis());
 
        }catch (Exception e) {
            System.out.println("You are screwed");

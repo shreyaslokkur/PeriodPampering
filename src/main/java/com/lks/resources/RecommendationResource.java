@@ -22,7 +22,7 @@ public class RecommendationResource {
     @Autowired
     RecommendationService recommendationService;
 
-    static Logger logger = LoggerFactory.getLogger(RecommendationResource.class);
+    private static Logger logger = LoggerFactory.getLogger(RecommendationResource.class);
 
     @POST
     @Path("/create")
